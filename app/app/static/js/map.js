@@ -1,16 +1,15 @@
-L.mapbox.accessToken = 'pk.eyJ1IjoiamFjcXVlcyIsImEiOiJuRm9TWGYwIn0.ndryRT8IT0U94pHV6o0yng';
-
-
-
-// Initial render =============================================================
-
-// Create a basemap
-var map = L.mapbox.map('map', 'jacques.k7coee6a', {
+var options = {
   zoomControl: false,
   scrollWheelZoom: false,
   minZoom: 3,
   maxZoom: 7
-});
+};
+
+L.mapbox.accessToken = 'pk.eyJ1IjoibWFya2tvbmciLCJhIjoiY2lteWNjMzFhMDQzbXZvbHUza3B6eTdoaSJ9.HuonodjO41vjRpMJk29lXA';
+var map = L.mapbox.map('map', 'mapbox.snapsat', options).setView([44, -122], 4);
+
+L.mapbox.styleLayer('mapbox://styles/markkong/cjpzxt6jm05jw2spcw9o4za8p').addTo(map);
+
 
 // Position navigation tools at the bottom of the map.
 // Searchbar

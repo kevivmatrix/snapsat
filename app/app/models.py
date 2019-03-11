@@ -154,7 +154,7 @@ class UserJob(Base):
         try:
             RenderCache.add(pk, True, rendertype)
         except:
-            print 'Could not add the job to the Rendered database.'
+            print('Could not add the job to the Rendered database.')
         return pk
 
     @classmethod
@@ -171,7 +171,7 @@ class UserJob(Base):
                                    cls.entityid).filter(
                 cls.jobid == jobid).one()
         except:
-            print 'Database write failed.'
+            print('Database write failed.')
             return None
         return (status_key[status[0]],
                 status[1], status[2], status[3], status[4])
@@ -189,7 +189,7 @@ class UserJob(Base):
                 cls.jobid == jobid).one()
             return status_key[job_info[0]], job_info[1], job_info[2]
         except:
-            print 'Database operation'
+            print('Database operation')
 
 
 class RenderCache(Base):
@@ -233,7 +233,7 @@ class RenderCache(Base):
             Session.query(cls).filter(cls.jobid == jobid).update({
                 "currentlyrend": currentlyrend, "renderurl": renderurl})
         except:
-            print 'could not update db'
+            print('could not update db')
 
     @classmethod
     def get_rendered_rendering_composites_sceneid(cls, entityid):
@@ -243,7 +243,7 @@ class RenderCache(Base):
                 cls.entityid == entityid,
                 cls.currentlyrend is not True).all()
         except:
-            print 'Database query failed get_rendered_rendering_composites_sceneid'
+            print('Database query failed get_rendered_rendering_composites_sceneid')
             return None
         return rendered
 
@@ -257,7 +257,7 @@ class RenderCache(Base):
                 cls.band1 == band1, cls.band2 == band2, cls.band3 == band3,
                 cls.currentlyrend is not True).all()
         except:
-            print 'Database query failed get_rendered_rendering_composites_sceneid'
+            print('Database query failed get_rendered_rendering_composites_sceneid')
             return None
         return rendered
 
@@ -271,7 +271,7 @@ class RenderCache(Base):
                 cls.rendertype == rendertype,
                 cls.renderurl.isnot(None)).count()
         except:
-            print 'Database query failed composite_availability'
+            print('Database query failed composite_availability')
             return None
 
         return output != 0
@@ -295,7 +295,7 @@ class RenderCache(Base):
             render_url = Session.query(cls.renderurl).filter(
                 cls.jobid == jobid).one()
         except:
-            print 'Database query failed get_renderurl'
+            print('Database query failed get_renderurl')
             return None
 
         return render_url[0]

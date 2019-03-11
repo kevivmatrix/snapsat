@@ -8,7 +8,7 @@ def main(global_config, **settings):
     """
     Configure and return a WSGI application.
     """
-    settings['sqlalchemy.url'] = os.environ.get('DATABASE_URL')
+    settings['sqlalchemy.url'] = 'sqlite:///foo.db'
     engine = engine_from_config(settings, 'sqlalchemy.')
     Session.configure(bind=engine)
     Base.metadata.bind = engine
